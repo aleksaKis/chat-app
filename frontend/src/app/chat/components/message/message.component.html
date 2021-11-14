@@ -1,0 +1,9 @@
+<ng-container *ngIf="message">
+  <div [class.mine]="message.isMine" class="message_wrapper">
+    <div class="left-side" [class.mine]="message.isMine">
+      <app-avatar [id]="message.id"></app-avatar>
+      <span class="text">{{ message.message }}</span>
+    </div>
+    <span class="time">{{ message.time | date: "short" }}</span>
+  </div>
+</ng-container>
