@@ -1,7 +1,7 @@
 import { createServer } from "http";
-import { createServerSocket, initializeServer } from "./initializeServer.js";
-import { socketHandlers } from "./handlers/socket.js";
-import { router } from "./router/index.js";
+import { createServerSocket, initializeServer } from "./initializeServer";
+import { socketHandlers } from "./handlers/socket";
+import { router } from "./router";
 
 const app = initializeServer(router);
 const httpServer = createServer(app);
@@ -13,4 +13,4 @@ io.on("connection", (socket) => {
   socket.on("disconnect", socketHandlers.disconnect);
 });
 
-httpServer.listen(PORT, () => console.log(`listening on port ${PORT}`));
+httpServer.listen(PORT, () => {return true})

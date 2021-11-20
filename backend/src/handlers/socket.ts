@@ -1,5 +1,6 @@
-import { io } from "../index.js";
-import { dbHandlers, messages } from "./db.js";
+import { io } from "../index";
+import { dbHandlers, messages } from "./db";
+import {Request, Response} from "express";
 
 export const socketHandlers = {
   message: (req, res) => {
@@ -16,6 +17,6 @@ export const socketHandlers = {
     }
   },
   disconnect: () => {
-    console.log("a user disconnected!");
+    // console.log("a user disconnected!");
   },
 };

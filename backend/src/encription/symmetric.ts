@@ -9,6 +9,6 @@ export const encryptMessage = (message) => {
   return cipher.update(message, "utf8", "hex") + cipher.final("hex");
 };
 
-export const decryptMessage = (encryptMessage) => {
-  return decipher.update(encryptMessage, "hex", "utf-8") + cipher.final("utf8");
+export const decryptMessage = (encryptedMessage) => {
+  return decipher.update(encryptedMessage, "hex", "utf-8") + cipher.final("utf8");
 };

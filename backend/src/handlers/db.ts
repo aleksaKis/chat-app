@@ -1,5 +1,5 @@
-import { connectToDb } from "../connection/db.js";
-import { convertById } from "../utils/converToHashObject.js";
+import { connectToDb } from "../connection/db";
+import { convertById } from "../utils/converToHashObject";
 
 const pool = connectToDb();
 export let messages = {};
