@@ -1,11 +1,19 @@
 import { connectToDb } from "../connection/db";
-import { convertById } from "../utils/converToHashObject";
+import { convertToHashArray } from "../utils/converToHashObject";
+import { IMessageHashArray, IMessagePayload } from "../types";
+import { Request, Response } from "express";
+
+interface GetMessagesRequestProps extends Request {
+  size?: number;
+}
+
+interface InsertMessageProps extends Request, IMessagePayload {}
 
 const pool = connectToDb();
-export let messages = {};
+export let messages: IMessageHashArray = {};
 
 export const dbHandlers = {
-  getMessages: (request, response) => {
+  getMessages: (request: GetMessagesRequestProps, response: Response) => {
     const limit = request.size || 20;
     pool.query(
       `SELECT * FROM messages ORDER BY time DESC LIMIT ${limit}`,
@@ -16,11 +24,11 @@ export const dbHandlers = {
         }
         const messageResponse = dbResponse.rows.reverse();
         response.status(200).json(messageResponse);
-        messages = convertById(messageResponse);
+        messages = convertToHashArray(messageResponse);
       }
     );
   },
-  insetMessages: (request) => {
+  insertMessages: (request: InsertMessageProps) => {
     const { id, message, time } = request;
     pool.query(
       "INSERT INTO messages (id, message, time) VALUES ($1, $2, $3)",
@@ -37,7 +45,7 @@ export const dbHandlers = {
       if (error) {
         // console.log(error);
       }
-      messages = results.rows;
+      messages = [results.rows];
     });
   },
 };

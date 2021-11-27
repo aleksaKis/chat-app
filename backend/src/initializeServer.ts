@@ -1,15 +1,14 @@
-import express, {Router} from "express";
-import cors from "cors";
+import express, { Express, Router } from "express";
+import cors, { CorsOptions } from "cors";
 import { Server } from "socket.io";
-import {Server as HttpServer} from 'http';
+import { Server as HttpServer } from "http";
 
-const CORS = {
-  // @ts-ignore
-  origin: (process.env.NODE_ENV = "DEV" ? "*" : false),
+const CORS: CorsOptions = {
+  origin: process.env.NODE_ENV === "DEV" ? "*" : undefined,
   methods: ["GET", "POST", "DELETE", "PUT"],
 };
 
-export const initializeServer = (router: Router) => {
+export const initializeServer = (router: Router): Express => {
   const app = express();
   app.use(cors(CORS));
   app.use(express.json());
@@ -17,6 +16,6 @@ export const initializeServer = (router: Router) => {
   return app;
 };
 
-export const createServerSocket = (server: HttpServer) => {
+export const createServerSocket = (server: HttpServer): Server => {
   return new Server(server, { cors: CORS });
 };

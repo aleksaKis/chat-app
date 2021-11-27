@@ -1,0 +1,9 @@
+build
+coverage
+dist
+node_modules
+
+# dot files
+.gitignore
+.eslintrc
+.eslintignore

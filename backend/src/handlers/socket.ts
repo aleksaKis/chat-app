@@ -1,22 +1,26 @@
 import { io } from "../index";
 import { dbHandlers, messages } from "./db";
-import {Request, Response} from "express";
+import { Request } from "express";
+import { IMessagePayload } from "../types";
+
+interface MessageProps extends Request, IMessagePayload {}
 
 export const socketHandlers = {
-  message: (req, res) => {
-    if (req.message && req.id) {
-      if (messages[req.id] !== undefined) {
-        messages[req.id] = [...messages[req.id], req.message];
+  message: async (req: MessageProps) => {
+    const { id, message } = req;
+    if (id && message) {
+      if (messages[id] !== undefined) {
+        messages[id] = [...messages[id], message];
       } else {
         messages[req.id] = [req.message];
       }
-      // todo move this to disconnect and save multiple messages
+      // todo use middleware to enable message encryption
       // const encryptedRow = encryptMessage(req.message);
-      dbHandlers.insetMessages(req);
+      dbHandlers.insertMessages(req);
       io.emit("message", req);
     }
   },
-  disconnect: () => {
+  disconnect: async () => {
     // console.log("a user disconnected!");
   },
 };

@@ -1,9 +1,12 @@
-export const convertById = (arrayWithObjects: any) => {
-  const newObject: any = {};
+import { IMessageHashArray, IMessagePayload } from "../types";
+
+export const convertToHashArray = (
+  arrayWithObjects: IMessagePayload[]
+): IMessageHashArray => {
+  const newObjectArray: IMessageHashArray = {};
   for (const prop of arrayWithObjects) {
     const id = prop.id;
-    delete prop.id;
-    newObject[id] = { ...prop };
+    newObjectArray[id] = [...prop.message];
   }
-  return newObject;
+  return newObjectArray;
 };

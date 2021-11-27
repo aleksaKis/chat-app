@@ -5,10 +5,12 @@ const iv = randomBytes(16);
 const cipher = createDecipheriv("aes256", key, iv);
 const decipher = createDecipheriv("aes256", key, iv);
 
-export const encryptMessage = (message) => {
+export const encryptMessage = (message: string) => {
   return cipher.update(message, "utf8", "hex") + cipher.final("hex");
 };
 
-export const decryptMessage = (encryptedMessage) => {
-  return decipher.update(encryptedMessage, "hex", "utf-8") + cipher.final("utf8");
+export const decryptMessage = (encryptedMessage: string) => {
+  return (
+    decipher.update(encryptedMessage, "hex", "utf-8") + cipher.final("utf8")
+  );
 };
