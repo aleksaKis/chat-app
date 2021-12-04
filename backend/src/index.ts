@@ -7,13 +7,12 @@ import { Socket } from "socket.io";
 const app = initializeServer(router);
 const httpServer = createServer(app);
 export const io = createServerSocket(httpServer);
-const PORT = 3000;
 
 io.on("connection", (socket: Socket): void => {
   socket.on("message", socketHandlers.message);
   socket.on("disconnect", socketHandlers.disconnect);
 });
 
-httpServer.listen(PORT, () => {
+httpServer.listen(process.env.CB_PORT, () => {
   return true;
 });

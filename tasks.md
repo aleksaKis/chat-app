@@ -1,6 +1,0 @@
-- [ ] Add types to backend (m)
-- [ ] Swap console logs with alternative lib (winston) (h)
-- [ ] Use yarn on backend and frontend (s)
-- [ ] Investigate if this will work as one repo (m)
-- [ ] Investigate how to or should you share database (m)
-- [ ] Stylize frontend (s)

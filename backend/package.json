@@ -8,10 +8,10 @@
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "NODE_ENV='DEV' node .",
+    "start": "DEBUG=express:* NODE_ENV='DEV' node .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts",
-    "prettify": "prettier --write ."
+    "prettify": "prettier --write .",
     "start-database": "exec brew services start postgresql",
     "stop-database": "exec brew services stop postgresql"
   },
@@ -29,6 +29,7 @@
     "@types/pg": "^8.6.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
+    "dotenv": "^10.0.0",
     "eslint": "^8.3.0",
     "nodemon": "^2.0.15",
     "prettier": "2.5.0",

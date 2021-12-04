@@ -2,6 +2,10 @@ import express, { Express, Router } from "express";
 import cors, { CorsOptions } from "cors";
 import { Server } from "socket.io";
 import { Server as HttpServer } from "http";
+import dotenv from "dotenv";
+
+// Add evniromemt variables
+dotenv.config();
 
 const CORS: CorsOptions = {
   origin: process.env.NODE_ENV === "DEV" ? "*" : undefined,
