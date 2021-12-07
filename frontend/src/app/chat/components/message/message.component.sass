@@ -1,17 +1,30 @@
-@use '../../../styles/variables'
+@use '../../../styles/spacing'
+@use '../../../styles/font-sizes'
+@use '../../../styles/theme'
 
 .message_wrapper
-  padding: variables.$regular
-  background-color: #F8FFE5
+  padding: spacing.$regular
+  background-color: theme.$primary
   display: flex
   justify-content: space-between
-  margin: 0 variables.$half
+  margin: 0 spacing.$half
+  font-size: font-sizes.$larger
   border-radius: 4px
+  gap: spacing.$regular
 
 .mine
-  background-color: #BEFBFF
+  background-color: theme.$secondary
   flex-direction: row-reverse
 
 .left-side
   display: flex
-  gap: variables.$regular
+  gap: spacing.$regular
+
+.time
+  display: flex
+  align-items: flex-end
+  font-size: font-sizes.$regular
+
+.text
+  margin: spacing.$half
+

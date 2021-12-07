@@ -10,7 +10,7 @@ import {
 @Component({
   selector: "app-send-message",
   templateUrl: "./send-message.component.html",
-  styleUrls: ["./send-message.component.sass"],
+  styleUrls: ["./send-message.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SendMessageComponent implements OnInit {
@@ -26,7 +26,7 @@ export class SendMessageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public sendMessage() {
+  public sendMessage(): void {
     if (this.messageText) {
       this.send.emit(this.messageText);
       this.messageText = "";

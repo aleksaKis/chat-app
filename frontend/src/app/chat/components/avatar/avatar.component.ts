@@ -14,6 +14,7 @@ import {
 export class AvatarComponent implements OnInit {
   @Input() id: string | undefined;
   public hexColor = "#fff";
+
   constructor() {}
 
   ngOnInit(): void {
