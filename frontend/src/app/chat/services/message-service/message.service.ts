@@ -8,7 +8,7 @@ import { take } from "rxjs/operators";
 @Injectable({
   providedIn: "root",
 })
-export class MessageService implements OnInit {
+export class MessageService {
   public message$: Subject<IMessage> = new Subject();
 
   private readonly _LOCAL_ADDRESS = "0.0.0.0";
@@ -22,9 +22,6 @@ export class MessageService implements OnInit {
 
   constructor(private http: HttpClient) {
     this.socket = io(`${this._LOCAL_ADDRESS}:${this._PORT}`);
-  }
-
-  ngOnInit(): void {
     this.getAllMessages();
     this.getNewMessage();
   }
