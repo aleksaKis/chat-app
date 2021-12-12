@@ -1,24 +1,24 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-
 import { MessageComponent } from "./message.component";
+import { createComponentFactory, Spectator } from "@ngneat/spectator";
+import { AvatarComponent } from "../avatar/avatar.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
+// Mocking element ref
+window.HTMLElement.prototype.scrollIntoView = jest.fn();
 
 describe("MessageComponent", () => {
-  let component: MessageComponent;
-  let fixture: ComponentFixture<MessageComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [MessageComponent],
-    }).compileComponents();
+  let spectator: Spectator<MessageComponent>;
+  const createComponent = createComponentFactory({
+    declarations: [AvatarComponent],
+    component: MessageComponent,
+    imports: [FormsModule, ReactiveFormsModule],
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MessageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
   });
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
+  it("should display MessageComponent", () => {
+    expect(spectator.component).toBeTruthy();
   });
 });

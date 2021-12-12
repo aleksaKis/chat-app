@@ -1,24 +1,18 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-
 import { SendMessageComponent } from "./send-message.component";
+import { createComponentFactory, Spectator } from "@ngneat/spectator";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
 
 describe("SendMessageComponent", () => {
-  let component: SendMessageComponent;
-  let fixture: ComponentFixture<SendMessageComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [SendMessageComponent],
-    }).compileComponents();
+  let spectator: Spectator<SendMessageComponent>;
+  const createComponent = createComponentFactory({
+    component: SendMessageComponent,
+    imports: [ReactiveFormsModule, FormsModule, MatButtonModule],
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SendMessageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
   });
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
-  });
+  it("should display SendMessageComponent", () => {});
 });

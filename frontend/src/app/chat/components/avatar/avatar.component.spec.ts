@@ -1,24 +1,26 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-
 import { AvatarComponent } from "./avatar.component";
+import { byRole, createComponentFactory, Spectator } from "@ngneat/spectator";
 
 describe("AvatarComponent", () => {
-  let component: AvatarComponent;
-  let fixture: ComponentFixture<AvatarComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [AvatarComponent],
-    }).compileComponents();
+  let app: Spectator<AvatarComponent>;
+  const createComponent = createComponentFactory({
+    component: AvatarComponent,
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AvatarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    app = createComponent();
   });
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
+  it("should display avatar", () => {
+    expect(app.component).toBeTruthy();
+  });
+
+  it("should display white color when no id is provided", () => {
+    const avatar = app.query(byRole("img"));
+    // TODO remove this hack when spectator implement toHaveStyle matcher
+    // @ts-ignore style is possible unknown
+    expect(avatar?.style._values).toEqual({
+      "background-color": "rgb(255, 255, 255)",
+    });
   });
 });

@@ -1,16 +1,21 @@
-import { TestBed } from "@angular/core/testing";
-
+import { createServiceFactory, SpectatorService } from "@ngneat/spectator";
 import { MessageService } from "./message.service";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+
+jest.mock("socket.io-client");
 
 describe("MessageService", () => {
-  let service: MessageService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(MessageService);
+  let spectator: SpectatorService<MessageService>;
+  const createService = createServiceFactory({
+    service: MessageService,
+    imports: [HttpClientTestingModule],
   });
 
-  it("should be created", () => {
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    spectator = createService();
+  });
+
+  it("should create service", () => {
+    expect(spectator.service).toBeTruthy();
   });
 });

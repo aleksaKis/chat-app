@@ -18,7 +18,6 @@ import { IMessage } from "./models/message.model";
 })
 export class ChatComponent implements OnInit, OnDestroy {
   public messageList: IMessage[] = [];
-
   private ngUnsubscribe = new Subject();
 
   constructor(

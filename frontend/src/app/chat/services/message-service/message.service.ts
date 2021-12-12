@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { Subject } from "rxjs";
 import { io, Socket } from "socket.io-client";
 import { IMessage } from "../../models/message.model";
@@ -8,21 +8,24 @@ import { take } from "rxjs/operators";
 @Injectable({
   providedIn: "root",
 })
-export class MessageService {
+export class MessageService implements OnInit {
   public message$: Subject<IMessage> = new Subject();
 
   private readonly _LOCAL_ADDRESS = "0.0.0.0";
   private readonly _PORT = 3000;
   private readonly SIZE = 20;
 
-  // Todo secure id generator with id service using crypto firebase video for front and backend
+  // Todo secure id generator with id service using crypto
   private readonly id = Math.floor(Math.random() * 16777215).toString();
 
   public socket: Socket;
 
   constructor(private http: HttpClient) {
-    this.getAllMessages();
     this.socket = io(`${this._LOCAL_ADDRESS}:${this._PORT}`);
+  }
+
+  ngOnInit(): void {
+    this.getAllMessages();
     this.getNewMessage();
   }
 

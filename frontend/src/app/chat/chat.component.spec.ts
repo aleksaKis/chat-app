@@ -1,24 +1,31 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-
 import { ChatComponent } from "./chat.component";
+import {
+  createComponentFactory,
+  mockProvider,
+  Spectator,
+} from "@ngneat/spectator";
+import { MessageComponent } from "./components/message/message.component";
+import { SendMessageComponent } from "./components/send-message/send-message.component";
+import { AvatarComponent } from "./components/avatar/avatar.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MessageService } from "./services/message-service/message.service";
+import { Subject } from "rxjs";
 
 describe("ChatComponent", () => {
-  let component: ChatComponent;
-  let fixture: ComponentFixture<ChatComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ChatComponent],
-    }).compileComponents();
+  let spectator: Spectator<ChatComponent>;
+  const createComponent = createComponentFactory({
+    declarations: [MessageComponent, SendMessageComponent, AvatarComponent],
+    imports: [FormsModule, ReactiveFormsModule],
+    component: ChatComponent,
+    providers: [mockProvider(MessageService, { message$: new Subject() })],
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChatComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent();
+    spectator.detectChanges();
   });
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
+  it("should display ChatComponent", () => {
+    expect(spectator.component).toBeTruthy();
   });
 });
