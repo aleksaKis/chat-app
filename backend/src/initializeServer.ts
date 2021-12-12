@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 import { Server as HttpServer } from "http";
 import dotenv from "dotenv";
 
-// Add evniromemt variables
+// Add environment variables
 dotenv.config();
 
 const CORS: CorsOptions = {
