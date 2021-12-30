@@ -9,7 +9,7 @@ import { SendMessageComponent } from "./components/send-message/send-message.com
 import { AvatarComponent } from "./components/avatar/avatar.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MessageService } from "./services/message-service/message.service";
-import { Subject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 
 describe("ChatComponent", () => {
   let spectator: Spectator<ChatComponent>;
@@ -17,7 +17,9 @@ describe("ChatComponent", () => {
     declarations: [MessageComponent, SendMessageComponent, AvatarComponent],
     imports: [FormsModule, ReactiveFormsModule],
     component: ChatComponent,
-    providers: [mockProvider(MessageService, { message$: new Subject() })],
+    providers: [
+      mockProvider(MessageService, { messages$: new BehaviorSubject([]) }),
+    ],
   });
 
   beforeEach(() => {

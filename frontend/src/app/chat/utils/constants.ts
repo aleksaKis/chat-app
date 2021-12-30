@@ -1,0 +1,2 @@
+// (16 ** 6) - 1
+export const NUMBER_OF_HEX_POSIBILITIES = 16777215;
