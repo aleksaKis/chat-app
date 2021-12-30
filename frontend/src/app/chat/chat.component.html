@@ -1,15 +1,19 @@
-<div class="chat_wrapper">
-  <ng-container *ngIf="messageList.length > 0; else noMessages">
-  <ul class="messages_wrapper">
-    <app-message
-      *ngFor="let message of messageList"
-      [class.mine]="message.isMine"
-      class="message_item"
-      [message]="message"
-    >
-    </app-message>
-  </ul>
-  </ng-container>
-  <ng-template #noMessages>No messages :(</ng-template>
-  <app-send-message (send)="sendMessage($event)"></app-send-message>
-</div>
+<ng-container *ngIf="messageList$ | async as messageList">
+  <div class="chat_wrapper">
+    <ng-container *ngIf="messageList && messageList.length; else noMessages">
+      <ul class="messages_wrapper">
+        <app-message
+          *ngFor="let message of messageList"
+          [class.mine]="message.isMine"
+          class="message_item"
+          [message]="message"
+        >
+        </app-message>
+      </ul>
+    </ng-container>
+    <app-send-message (send)="sendMessage($event)"></app-send-message>
+  </div>
+  <ng-template #noMessages
+    ><span class="empty">No messages :( </span></ng-template
+  >
+</ng-container>

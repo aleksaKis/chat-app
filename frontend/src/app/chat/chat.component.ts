@@ -1,13 +1,11 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
 } from "@angular/core";
 import { MessageService } from "./services/message-service/message.service";
-import { takeUntil } from "rxjs/operators";
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { IMessage } from "./models/message.model";
 
 @Component({
@@ -17,33 +15,21 @@ import { IMessage } from "./models/message.model";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChatComponent implements OnInit, OnDestroy {
-  public messageList: IMessage[] = [];
+  public messageList$: Observable<IMessage[]> = this.messageService.messages$;
   private ngUnsubscribe = new Subject();
 
-  constructor(
-    private messageService: MessageService,
-    private cd: ChangeDetectorRef
-  ) {}
+  constructor(private messageService: MessageService) {}
 
   ngOnInit(): void {
-    this.getNewMessages();
+    this.messageService.getAllMessages();
+    this.messageService.subscribeToNewMessages();
   }
-  public sendMessage(message: string) {
+
+  public sendMessage(message: string): void {
     this.messageService.sendMessage(message);
   }
 
-  private getNewMessages(): void {
-    this.messageService.message$
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((message) => {
-        if (message) {
-          this.messageList = [...this.messageList, message];
-          this.cd.markForCheck();
-        }
-      });
-  }
-
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.ngUnsubscribe.next(false);
     this.ngUnsubscribe.complete();
   }

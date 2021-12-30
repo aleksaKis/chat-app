@@ -23,8 +23,8 @@ export const dbHandlers = {
           return;
         }
         const messageResponse = dbResponse.rows.reverse();
-        response.status(200).json(messageResponse);
         messages = convertToHashArray(messageResponse);
+        response.status(200).json(messageResponse);
       }
     );
   },
