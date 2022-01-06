@@ -4,7 +4,6 @@ import {
   Component,
   ElementRef,
   Input,
-  OnInit,
 } from "@angular/core";
 import { IMessage } from "../../models/message.model";
 
