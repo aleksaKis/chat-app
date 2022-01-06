@@ -1,5 +1,5 @@
-import { Injectable, OnInit } from "@angular/core";
-import { BehaviorSubject, Subject } from "rxjs";
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 import { io, Socket } from "socket.io-client";
 import { IMessage } from "../../models/message.model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
