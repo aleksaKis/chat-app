@@ -3,8 +3,8 @@
   "version": "0.0.3",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 2000",
-    "start-host": "ng serve --port 2000 --host 0.0.0.0",
+    "start": "ng serve --port 2200",
+    "start-host": "ng serve --port 2200 --host 0.0.0.0",
     "build": "ng build",
     "lint": "prettier --write .",
     "watch": "ng build --watch --configuration development",

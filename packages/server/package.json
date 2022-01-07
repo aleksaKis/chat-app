@@ -12,8 +12,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts",
     "prettify": "prettier --write .",
-    "start-database": "exec brew services start postgresql",
-    "stop-database": "exec brew services stop postgresql"
+    "start:database": "exec brew services start postgresql",
+    "stop:database": "exec brew services stop postgresql"
   },
   "author": "",
   "license": "ISC",

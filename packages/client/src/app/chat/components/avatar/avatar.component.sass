@@ -1,8 +1,11 @@
-@use 'src/styles/theme'
+@use 'src/styles/constants/theme'
+@use 'src/styles/constants/spacing'
+@use 'src/styles/mixin/common-styles'
 
 .avatar-wrapper
   border-radius: 25px
-  width: 24px
-  height: 24px
-  background-color: theme.$third
+  width: calc( spacing.$triple + 8px)
+  height: calc( spacing.$triple + 8px)
+  color: theme.$text
+  @include common-styles.center
   border: 1px solid rgba(213, 213, 213, 0.62)

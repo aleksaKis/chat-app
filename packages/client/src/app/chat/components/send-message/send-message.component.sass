@@ -1,0 +1,37 @@
+@use "src/styles/constants/spacing"
+@use "src/styles/constants/theme"
+@use 'src/styles/mixin/common-styles'
+
+@mixin inverseTheme() 
+  background-color: theme.$background
+  color: theme.$textLight
+
+.wrapper 
+  display: flex
+  gap: 4px
+  padding: 8px 0
+  width: 50%
+  margin: 0 auto
+
+.text-input
+  padding: spacing.$regular
+  border-radius: 7px
+  outline: 0
+  border: 0
+  flex: 1
+  @include inverseTheme
+
+.send 
+  padding: spacing.$half spacing.$regular
+  border-radius: 7px
+  @include common-styles.center
+  @include inverseTheme
+
+  &-icon 
+    transform: rotate(317deg)
+    position: relative
+    bottom: 4px
+    left: 2px
+
+.send:disabled
+  @include inverseTheme
