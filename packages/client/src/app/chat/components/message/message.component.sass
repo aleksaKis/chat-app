@@ -1,19 +1,20 @@
-@use 'src/styles/spacing'
-@use 'src/styles/font-sizes'
-@use 'src/styles/theme'
+@use 'src/styles/constants/spacing'
+@use 'src/styles/constants/font-sizes'
+@use 'src/styles/constants/theme'
+@use 'src/styles/mixin/common-styles'
 
 .message_wrapper
   padding: spacing.$regular
-  background-color: theme.$primary
-  display: flex
-  justify-content: space-between
+  background-color: theme.$secondary
+  @include common-styles.space-between
   margin: 0 spacing.$half
   font-size: font-sizes.$larger
   border-radius: 4px
   gap: spacing.$regular
+  box-shadow: 0px 2px 5px 1px #00000062
 
 .mine
-  background-color: theme.$secondary
+  background-color: theme.$primary
   flex-direction: row-reverse
 
 .left-side

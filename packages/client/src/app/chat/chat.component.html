@@ -1,5 +1,6 @@
 <ng-container *ngIf="messageList$ | async as messageList">
   <div class="chat_wrapper">
+    <app-float-header></app-float-header>
     <ng-container *ngIf="messageList && messageList.length; else noMessages">
       <ul class="messages_wrapper">
         <app-message
@@ -11,7 +12,9 @@
         </app-message>
       </ul>
     </ng-container>
-    <app-send-message (send)="sendMessage($event)"></app-send-message>
+    <div class="control">
+      <app-send-message (send)="sendMessage($event)"></app-send-message>
+    </div>
   </div>
   <ng-template #noMessages
     ><span class="empty">No messages :( </span></ng-template

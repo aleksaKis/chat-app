@@ -1,8 +1,8 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
+  "extends": "../../tsconfig.base",
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -18,7 +18,7 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
-      "*": ["node_modules/*"]
+      "*": ["./../../node_modules/*"]
     }
   },
   "angularCompilerOptions": {

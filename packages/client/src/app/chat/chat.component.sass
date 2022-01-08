@@ -1,16 +1,16 @@
-@use 'src/styles/spacing'
-@use 'src/styles/theme'
+@use 'src/styles/constants/spacing'
+@use 'src/styles/constants/theme'
+@use 'src/styles/mixin/common-styles'
 
 .chat_wrapper
+  position: relative
   background-color: theme.$background
-  flex: 1
-  display: flex
-  max-width: 63%
+  max-width: 53%
   flex-direction: column
-  justify-content: space-between
+  flex: 1
   border-radius: 4px
-  padding: spacing.$half
   box-shadow: 0 4px 19px -4px hsla(0, 0%, 0%, 0.61)
+  @include common-styles.space-between
 
   .messages_wrapper
     overflow-y: scroll
@@ -28,10 +28,10 @@
 .message_item
   min-width: 150px
   align-self: flex-start
-  box-shadow: -1px -1px 5px -4px rgb(0 0 0 / 61%)
-
+  
 .empty
-  display: flex
   flex: 1
-  align-items: center
-  justify-content: center
+  @include common-styles.center
+
+.control
+  background-color: #0000009c

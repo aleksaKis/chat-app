@@ -1,11 +1,11 @@
 <div class="wrapper">
-  <input class="text-wrapper" type="text" [(ngModel)]="messageText" />
+  <input class="text-input" type="text" [(ngModel)]="messageText" />
   <button
-    mat-raised-button
+    mat-icon-button
     class="send"
     [disabled]="!messageText"
     (click)="sendMessage()"
   >
-    Send
+    <mat-icon class="send-icon">send</mat-icon>
   </button>
 </div>

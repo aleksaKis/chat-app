@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "../../node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -26,14 +26,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "sass",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/custom-theme.scss",
-              "src/styles.sass"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/custom-theme.scss", "src/styles.sass"],
             "scripts": []
           },
           "configurations": {
@@ -41,7 +35,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "900",
                   "maximumError": "1mb"
                 },
                 {

@@ -10,7 +10,7 @@ import {
 @Component({
   selector: "app-send-message",
   templateUrl: "./send-message.component.html",
-  styleUrls: ["./send-message.component.scss"],
+  styleUrls: ["./send-message.component.sass"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SendMessageComponent implements OnInit {

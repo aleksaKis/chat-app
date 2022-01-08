@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es2018"],
+    "module": "commonjs",
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "target": "ES2016",
+    "strictNullChecks": true,
+    "paths": {
+      "@scope/*": ["packages/*/src"]
+    }
+  },
+  "exclude": ["node_modules", "**/node_modules/*"]
+}

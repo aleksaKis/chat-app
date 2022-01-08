@@ -9,6 +9,7 @@
     "start": "yarn client & yarn server",
     "server": "yarn --cwd packages/server start",
     "client": "yarn --cwd packages/client start",
+    "build": "yarn --cwd packages/client build --prod && yarn --cwd packages/server build",
     "test": "yarn --cwd packages/client test"
   },
   "devDependencies": {
