@@ -1,0 +1,23 @@
+@use "src/styles/spacing";
+
+.wrapper {
+  display: flex;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.text-wrapper {
+  padding: spacing.$regular;
+  border-radius: 7px;
+  outline: 0;
+  border: 0;
+  flex: 1;
+}
+
+.send {
+  padding: spacing.$half spacing.$regular;
+  background-color: #f7ffe4;
+  border-radius: 7px;
+  outline: 0;
+  border: 0;
+}
